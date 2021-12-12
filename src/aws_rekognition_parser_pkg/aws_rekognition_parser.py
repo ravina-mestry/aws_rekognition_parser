@@ -7,14 +7,14 @@ def parse_rekognition_response_receipt_text(rekognitionResponse, vendorNameList)
     isAmountTotal = False
 
     for text in rekognitionResponse['TextDetections']:
-        print( text['Type'] + ' ' + text['DetectedText'].lower() + ' : ' + str(text['Confidence']))
+        #print( text['Type'] + ' ' + text['DetectedText'].lower() + ' : ' + str(text['Confidence']))
 
         if numTotal == 1:
             numTotal = 2
         
         if not isVendorName:
             for vendorName in vendorNameList:
-                if text['DetectedText'].lower() == vendorName:
+                if text['DetectedText'].lower() == vendorName.lower():
                     receiptText['vendorName'] = vendorName
                     isVendorName = True
 
